@@ -1,6 +1,8 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 
+const User = require('../models').User;
+
 const localOptions = { usernameField: 'email' };
 const localLogin = new LocalStrategy(localOptions, (email, pw, done) => {
   // Verify this email and password
@@ -23,6 +25,17 @@ const localLogin = new LocalStrategy(localOptions, (email, pw, done) => {
 	}).catch(err => {
 		done(err);
 	});
+});
+
+// Passport serializer/deserializer
+passport.serializeUser((user, done) => {
+  done(null, user.get('id'));
+});
+
+passport.deserializeUser((id, done) => {
+  User.findById(id).then(user => {
+    done(null, { id: user.get('id') });
+  });
 });
 
 passport.use(localLogin);

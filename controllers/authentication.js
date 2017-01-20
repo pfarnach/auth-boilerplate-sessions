@@ -23,9 +23,9 @@ exports.signup = (req, res, next) => {
 			password
 		}).then(createdUser => {
 			// Respond to request indicating the user was created
-			req.login(req.body, (err) => {
+			req.login(createdUser, err => {
         if (err) {
-          throw new Error('Login error: ' + err);
+          return res.status(400).send({ error: 'Serialization error' });
         }
 
         res.send({ loggedIn: true });
@@ -36,6 +36,12 @@ exports.signup = (req, res, next) => {
 	});
 };
 
-exports.login = (req, res, next) => {
+exports.signin = (req, res) => {
   res.send({ loggedIn: true });
+};
+
+exports.signout = (req, res) => {
+  req.session.destroy(() => {
+    res.send({ msg: 'Successfully signed out'});
+  });
 };

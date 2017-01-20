@@ -13,7 +13,12 @@ function UserModel(sequelize, DataTypes) {
         this.setDataValue('email', val.toLowerCase())
       }
     },
-    hash: DataTypes.STRING,
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+	      len: [6, 100]
+      }
+    },
     attempts: {
       type: DataTypes.INTEGER,
       defaultValue: 0

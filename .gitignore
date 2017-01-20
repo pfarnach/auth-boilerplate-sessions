@@ -2,3 +2,4 @@
 dump.rdb
 config.js
 node_modules/
+.vscode/

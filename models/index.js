@@ -4,9 +4,8 @@ const Sequelize = require('sequelize');
 
 const config = require('../config');
 
-
 // Init db
-const sequelize = new Sequelize(config.db.POSTGRES_URL);
+const sequelize = new Sequelize(config.db.POSTGRES_URL, { logging: false });
 
 const db = {};
 
