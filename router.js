@@ -8,7 +8,7 @@ const requireSignin = passport.authenticate('local');
 
 const requireAuth = (req, res, next) => {
   // req.user is set in passport deserializer
-  if (req.user && req.user.id) {
+  if (req.session && req.user && req.user.id) {
     return next();
   }
   res.status(401).send();
