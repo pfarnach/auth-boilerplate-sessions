@@ -15,10 +15,10 @@ const requireAuth = (req, res, next) => {
 };
 
 module.exports = (app) => {
-	// Generic unprotected route
-	app.get('/', (req, res) => {
-		res.sendFile('index.html');
-	});
+  // Generic unprotected route
+  app.get('/', (req, res) => {
+    res.sendFile('index.html');
+  });
 
   // Generic protected route
   app.get('/protected', requireAuth, (req, res) => {

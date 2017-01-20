@@ -43,6 +43,6 @@ router(app);
 
 // Init db
 models.sequelize.sync({ force: false }).then(() => {
-	// Run server
-	app.listen(port, () => console.log(`Server listening on port ${port}`));
+  // Run server
+  app.listen(port, () => console.log(`Server listening on port ${port}`));
 });

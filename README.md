@@ -1,4 +1,4 @@
-# Auth boilerplate (sessions)
+# Session-based Auth boilerplate
 
 ### Overview
 This is a boilerplate project that's starting point for session-based authentication in NodeJS/Express apps.  It uses Passport, bcrypt, Postgres/Sequelize, and express-session with Redis.
